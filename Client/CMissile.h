@@ -25,5 +25,7 @@ public:
         m_vDir = _vDir; 
         m_vDir.Normalize();
     }
+
+    CLONE(CMissile);
 };
 

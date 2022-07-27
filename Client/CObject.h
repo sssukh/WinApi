@@ -15,6 +15,7 @@ private:
 
 public:
 	CObject();
+	CObject(const CObject& _origin);
 	virtual ~CObject();
 
 	void SetPos(Vec2 _vPos) { m_vPos = _vPos; }
@@ -43,6 +44,7 @@ public:
 
 	void component_render(HDC _dc);
 
+	virtual CObject* Clone() = 0;
 private:
 	// delete event 에서만 호출가능
 	void SetDead() { m_bAlive = false; }
