@@ -12,7 +12,7 @@ private:
 
 private:
     CTexture();
-    ~CTexture();
+    virtual ~CTexture();
 
     friend class CResMgr;
 public:

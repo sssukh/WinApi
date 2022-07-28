@@ -26,7 +26,7 @@ void Safe_Delete_Map(map<T1, T2>& _map)
 
 	for (; iter != _map.end(); ++iter)
 	{
-		if (nullptr !- iter->second)
+		if (nullptr != iter->second)
 			delete iter->second;
 	}
 
