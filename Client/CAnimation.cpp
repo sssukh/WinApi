@@ -30,13 +30,18 @@ void CAnimation::update()
 	if (m_fAccTime > m_vecFrm[m_iCurFrm].fDuration)
 	{
 		++m_iCurFrm;
+		
 
 		if (m_vecFrm.size() <= m_iCurFrm)
 		{
 			m_iCurFrm = -1;
 			m_bFinish = true;
+			m_fAccTime = 0.f;
+			return;
 		}
+
 		m_fAccTime -= m_vecFrm[m_iCurFrm].fDuration;
+
 	}
 }
 
@@ -48,7 +53,8 @@ void CAnimation::render(HDC _dc)
 	CObject* pObj = m_pAnimator->GetObj();
 	Vec2 vPos = pObj->GetPos();
 
-	m_vecFrm[m_iCurFrm].vSlice;
+	vPos += m_vecFrm[m_iCurFrm].vOffset;		//Object Position에 Offset 만큼 추가 이동위치
+
 
 	
 

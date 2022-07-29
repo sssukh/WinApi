@@ -13,6 +13,7 @@
 #include "CTexture.h"
 #include "CCollider.h"
 #include "CAnimator.h"
+#include "CAnimation.h"
 
 CPlayer::CPlayer()
 {
@@ -35,6 +36,13 @@ CPlayer::CPlayer()
 		Vec2(60.f,65.f),Vec2(60.f,0.f), 0.1f, 10);
 
 	GetAnimator()->Play(L"WALK_DOWN", true);
+
+	CAnimation* pAnim = GetAnimator()->FindAnimation(L"WALK_DOWN");
+
+	for (int i = 0; i < pAnim->GetMaxFrame(); ++i)
+		pAnim->GetFrame(i).vOffset = Vec2(0.f, -20.f);
+
+
 }
 
 CPlayer::~CPlayer()

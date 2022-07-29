@@ -7,6 +7,7 @@ struct tAnimFrm
 {
 	Vec2	vLT;
 	Vec2	vSlice;
+	Vec2	vOffset;
 	float	fDuration;
 };
 
@@ -40,6 +41,10 @@ public:
 		m_iCurFrm = _iFrameIdx;
 		m_fAccTime = 0.f;
 	}
+
+	// 받아간 쪽에서 수정할 수 있게 레퍼런스를 리턴
+	tAnimFrm& GetFrame(int _iIdx) { return m_vecFrm[_iIdx]; }
+	int GetMaxFrame() { return m_vecFrm.size(); }
 
 private:
 	// 한번 정한 이름은 변하면안된다.
