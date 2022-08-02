@@ -8,6 +8,7 @@
 #include "CCollisionMgr.h"
 #include "CEventMgr.h"
 #include "CObject.h"
+#include "CCamera.h"
 
 //방법 1
 //CCore* CCore::g_pInst = nullptr;
@@ -57,7 +58,7 @@ int CCore::init(HWND _hWnd, POINT _ptResolution)
 	HBITMAP hOldBit = (HBITMAP)SelectObject(m_memDC, m_hBit);
 	DeleteObject(hOldBit);
 
-	// 자주 사용 ㅎ할 펜 및 브러쉬 생성
+	// 자주 사용 할 펜 및 브러쉬 생성
 	CreateBrushPen();
 
 	// Manager 초기화
@@ -79,6 +80,7 @@ void CCore::progress()
 	// ==============
 	CTimeMgr::GetInst()->update();
 	CKeyMgr::GetInst()->update();
+	CCamera::GetInst()->update();
 	// =============
 	// Scene Update
 	// =============
