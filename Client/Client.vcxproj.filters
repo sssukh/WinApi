@@ -182,6 +182,9 @@
     <ClInclude Include="CCamera.h">
       <Filter>Engine\03.Manager\Camera</Filter>
     </ClInclude>
+    <ClInclude Include="global.h">
+      <Filter>Engine\01.Header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">

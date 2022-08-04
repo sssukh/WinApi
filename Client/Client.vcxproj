@@ -44,6 +44,7 @@
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
+    <EnableUnitySupport>true</EnableUnitySupport>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -51,6 +52,7 @@
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
+    <EnableUnitySupport>true</EnableUnitySupport>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -120,8 +122,10 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeader>Create</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <MinFilesInUnityFile>8</MinFilesInUnityFile>
+      <UnityFilesDirectory>$(ProjectDir)</UnityFilesDirectory>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -136,6 +140,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <MinFilesInUnityFile>8</MinFilesInUnityFile>
+      <UnityFilesDirectory>$(ProjectDir)</UnityFilesDirectory>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -171,6 +177,7 @@
     <ClInclude Include="define.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="func.h" />
+    <ClInclude Include="global.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SelectGDI.h" />
