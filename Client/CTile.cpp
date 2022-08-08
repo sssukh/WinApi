@@ -5,7 +5,7 @@
 
 CTile::CTile()
 	: m_pTileTex(nullptr)
-	, m_iIdx(3)
+	, m_iIdx(7)
 {
 	SetScale(Vec2(TILE_SIZE, TILE_SIZE));
 }
@@ -31,18 +31,22 @@ void CTile::render(HDC _dc)
 
 	UINT iCurRow = (UINT)m_iIdx / iMaxCol;
 	UINT iCurCol = (UINT)m_iIdx % iMaxCol;
+	
+	// 이미지 범위를 벗어난 인덱스
+	if (iMaxRow <= iCurRow)
+		assert(nullptr);
 
 	Vec2 vRenderPos = CCamera::GetInst()->GetRenderPos(GetPos());
 	Vec2 vScale = GetScale();
-
+	/*
 	Rectangle(_dc
 		, int(vRenderPos.x)
 		, int(vRenderPos.y)
 		, int(vRenderPos.x + vScale.x)
 		, int(vRenderPos.y + vScale.y)
 	);
-
-	/*
+	*/
+	
 	BitBlt(_dc
 		, int(vRenderPos.x)
 		, int(vRenderPos.y)
@@ -52,5 +56,5 @@ void CTile::render(HDC _dc)
 		, iCurCol * TILE_SIZE
 		, iCurRow * TILE_SIZE
 		, SRCCOPY );
-	*/
+	
 }

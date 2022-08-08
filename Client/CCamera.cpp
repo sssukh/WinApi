@@ -9,9 +9,9 @@
 
 CCamera::CCamera()
 	: m_pTargetObj(nullptr)
-	, m_fTime(1.f)
+	, m_fTime(0.5f)
 	, m_fSpeed(0.f)
-	, m_fAccTime(0.f)
+	, m_fAccTime(0.5f)
 {
 		
 }
@@ -63,7 +63,7 @@ void CCamera::CalDiff()
 
 	m_fAccTime += fDT;
 
-	if (m_fAccTime > m_fTime)
+	if (m_fAccTime >= m_fTime)
 	{
 		m_vCurLookAt = m_vLookAt;
 	}
