@@ -32,6 +32,19 @@ void CAnimator::update()
 		
 }
 
+void CAnimator::finalupdate()
+{
+	if (nullptr != m_pCurAnim)
+	{
+		m_pCurAnim->update();
+
+		if (m_bRepeat && m_pCurAnim->IsFinish())
+		{
+			m_pCurAnim->SetFrame(0);
+		}
+	}
+}
+
 void CAnimator::render(HDC _dc)
 {
 	if (nullptr != m_pCurAnim)
