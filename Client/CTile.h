@@ -8,12 +8,17 @@ class CTile :
 {
 private:
     CTexture*   m_pTileTex;
-    int         m_iIdx;         // 음수일 경우 아무것도 참조하지 않겠다.
+    int         m_iImgIdx;         // 음수일 경우 아무것도 참조하지 않겠다.
 
 public:
     void SetTexture(CTexture* _pTex)
     {
         m_pTileTex = _pTex;
+    }
+
+    void AddImgIdx()
+    {
+        ++m_iImgIdx;
     }
 private:
     virtual void update();
