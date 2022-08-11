@@ -9,6 +9,7 @@
 #include "CEventMgr.h"
 #include "CObject.h"
 #include "CCamera.h"
+#include "CUIMgr.h"
 
 //방법 1
 //CCore* CCore::g_pInst = nullptr;
@@ -88,6 +89,9 @@ void CCore::progress()
 
 	// 충돌체크
 	CCollisionMgr::GetInst()->update();
+
+	// UI 이벤트 체크
+	CUIMgr::GetInst()->update();
 	
 
 	// =========
