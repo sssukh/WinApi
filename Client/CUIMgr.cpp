@@ -27,6 +27,7 @@ void CUIMgr::update()
 
 	for (size_t i = 0; i < vecUI.size(); ++i)
 	{
+		// 부모 UI 포함, 자식 UI 들 중 실제 타겟팅 된 UI를 가져온다.
 		CUI* pUI = (CUI*)vecUI[i];
 
 
@@ -67,7 +68,11 @@ CUI* CUIMgr::GetTargetedUI(CUI* _pParentUI)
 
 	// 1. 부모 UI 포함, 모든 자식들을 검사 한다.
 
-	list<CUI*> queue;
+	static list<CUI*> queue;
+	static vector<CUI*> vecNoneTarget;
+
+	queue.clear();
+	vecNoneTarget.clear();
 
 	queue.push_back(_pParentUI);
 
@@ -81,15 +86,15 @@ CUI* CUIMgr::GetTargetedUI(CUI* _pParentUI)
 		// 타겟 UI 들 중, 더 우선순위가 높은 기준은 더 낮은 계층의 자식 UI
 		if (pUI->IsMouseOn())
 		{
+			if (nullptr != pTargetUI)
+			{
+				vecNoneTarget.push_back(pTargetUI);
+			}
 			pTargetUI = pUI;
 		}
 		else
 		{
-			// 왼쪽 버튼 떼면, 눌렀던 체크를 다시 해제한다.
-			if (bLbtnAway)
-			{
-				pUI->m_bLbtnDown = false;
-			}
+			vecNoneTarget.push_back(pUI);
 		}
 		
 
@@ -97,6 +102,15 @@ CUI* CUIMgr::GetTargetedUI(CUI* _pParentUI)
 		for (size_t i = 0; i < vecChild.size(); ++i)
 		{
 			queue.push_back(vecChild[i]);
+		}
+	}
+
+	// 왼쪽버튼 떼면, 눌렀던 체크를 다시 해제한다.
+	if (bLbtnAway)
+	{
+		for (size_t i = 0; i < vecNoneTarget.size(); ++i)
+		{
+			vecNoneTarget[i]->m_bLbtnDown = false;
 		}
 	}
 	return pTargetUI;
